@@ -1,436 +1,845 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="utf-8">
-<title>Kaizen — Tus finanzas claras, incluso las de tu tarjeta de crédito</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Kaizen es la app que entiende cómo funciona una tarjeta de crédito en México: fecha de corte, fecha límite, meses sin intereses y lo que realmente vas a pagar. Regístrate para el lanzamiento.">
-<style>
-@keyframes kz-draw{0%{stroke-dashoffset:436}55%{stroke-dashoffset:0}70%{stroke-dashoffset:0}100%{stroke-dashoffset:-436}}
-html{scroll-behavior:smooth}
-body{margin:0;background:#0B0B0C;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
-a{color:#C7A977;text-decoration:none}a:hover{color:#E2CB9E}
-.kz-lp{--bg:#0B0B0C;--sf:#1D1D21;--sf2:#2A2A30;--inp:#141417;--ln:rgba(255,255,255,.08);--ln2:rgba(255,255,255,.14);--tx:#F4F2EC;--tx2:#9C9A93;--tx3:#7C7A73;--tx4:#56544E;--inv:#0B0B0C;--gold:#C7A977;--goldsoft:#E2CB9E;--golddeep:#9C7E4E;--goldsub:rgba(199,169,119,.12);--goldmut:rgba(199,169,119,.30);--pos:#6FAE8F;--possub:rgba(111,174,143,.12);--warn:#D9A441;--warnsub:rgba(217,164,65,.12);--neg:#C97B6B;--negsub:rgba(201,123,107,.12);--pro:#E2CB9E;--prosub:rgba(226,203,158,.12);--promut:rgba(226,203,158,.30)}
-.kz-num{font-family:ui-monospace,"Courier New",monospace;font-variant-numeric:tabular-nums}
-.kz-eyebrow{font-family:ui-monospace,"Courier New",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase}
-.kz-sec{max-width:1120px;margin:0 auto;padding:0 24px}
-.kz-h2{font-size:clamp(26px,3.4vw,40px);font-weight:700;letter-spacing:-.03em;line-height:1.15;margin:0;text-wrap:pretty}
-.kz-p{font-size:15px;line-height:1.7;margin:0;text-wrap:pretty}
-.kz-card{border-radius:20px;padding:22px 24px}
-.kz-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:14px;padding:15px 26px;font-size:14.5px;font-weight:600;min-height:48px;box-sizing:border-box;border:none;cursor:pointer;font-family:inherit}
-.kz-btn:disabled{opacity:.6;cursor:default}
-.kz-nav{display:flex;align-items:center;gap:22px}
-.kz-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr))}
-.kz-grid-2{display:grid;gap:40px;align-items:center;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr))}
-.kz-grid-hero{display:grid;gap:44px;align-items:center;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr))}
-.kz-grid-plans{display:grid;gap:18px;align-items:start;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr))}
-.kz-input{flex:1;min-width:200px;background:var(--sf);border:1px solid var(--ln2);border-radius:14px;padding:15px 18px;font-size:14px;color:var(--tx);min-height:48px;box-sizing:border-box;font-family:inherit}
-.kz-input::placeholder{color:var(--tx3)}
-.kz-input:focus{outline:2px solid var(--gold);outline-offset:1px}
-.kz-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
-@media (max-width:720px){.kz-nav{display:none}.kz-sec{padding:0 18px}}
-</style>
-</head>
-<body>
+  <meta charset="utf-8">
+  <title>Kaizen — Tus finanzas claras, incluso las de tu tarjeta de crédito</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+    content="Kaizen es la app que entiende cómo funciona una tarjeta de crédito en México: fecha de corte, fecha límite, meses sin intereses y lo que realmente vas a pagar. Regístrate para el lanzamiento.">
+  <style>
+    @keyframes kz-draw {
+      0% {
+        stroke-dashoffset: 436
+      }
 
-<div class="kz-lp" data-t="dark" style="background:var(--bg);color:var(--tx);min-height:100vh;overflow-x:hidden">
+      55% {
+        stroke-dashoffset: 0
+      }
 
-  <div style="position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:color-mix(in oklab,var(--bg) 82%,transparent);border-bottom:1px solid var(--ln)">
-    <div class="kz-sec" style="display:flex;align-items:center;gap:16px;height:66px">
-      <a href="#top" style="display:flex;align-items:center;gap:9px;color:var(--tx)">
-        <svg viewBox="0 0 240 240" style="width:26px;height:26px"><path d="M206.7,104.7 A88 88 0 1 1 164,43.8" fill="none" stroke="#C7A977" stroke-width="16" stroke-linecap="round"></path></svg>
-        <span style="font-weight:700;font-size:17px;letter-spacing:-.02em">Kaizen</span>
-      </a>
-      <div style="flex:1"></div>
-      <div class="kz-nav">
-        <a href="#funciones" style="font-size:13.5px;color:var(--tx2)">Funciones</a>
-        <a href="#tarjetas" style="font-size:13.5px;color:var(--tx2)">Tarjetas</a>
-        <a href="#planes" style="font-size:13.5px;color:var(--tx2)">Planes</a>
-        <a href="#futuro" style="font-size:13.5px;color:var(--tx2)">Qué sigue</a>
-      </div>
-      <a href="#lanzamiento" class="kz-btn" style="background:var(--gold);color:var(--inv);padding:11px 20px;font-size:13.5px;min-height:40px;flex:none">Avísame</a>
-    </div>
-  </div>
+      70% {
+        stroke-dashoffset: 0
+      }
 
-  <div id="top" style="position:relative;overflow:hidden;border-bottom:1px solid var(--ln)">
-    <div style="position:absolute;top:-180px;left:50%;transform:translateX(-50%);width:900px;height:900px;background:radial-gradient(circle,var(--goldsub) 0%,transparent 62%);pointer-events:none"></div>
-    <div class="kz-sec kz-grid-hero" style="position:relative;padding-top:70px;padding-bottom:70px">
-      <div style="min-width:0">
-        <div style="display:inline-flex;align-items:center;gap:9px;border:1px solid var(--goldmut);background:var(--goldsub);border-radius:999px;padding:7px 14px;margin-bottom:20px">
-          <span style="width:7px;height:7px;border-radius:999px;background:var(--gold)"></span>
-          <span class="kz-eyebrow" style="font-size:10px;color:var(--gold)">Próximamente · en desarrollo</span>
-        </div>
-        <h1 style="font-size:clamp(34px,5.2vw,56px);font-weight:700;letter-spacing:-.04em;line-height:1.08;margin:0 0 18px;text-wrap:balance">Tus finanzas claras, incluso las de tu tarjeta de crédito.</h1>
-        <p class="kz-p" style="color:var(--tx2);font-size:16.5px;max-width:520px;margin-bottom:28px">Kaizen es la app que sí entiende cómo funciona una TDC en México: fecha de corte, fecha límite, meses sin intereses y lo que realmente vas a pagar el mes que entra. Registras un gasto en dos toques y el resto se calcula solo.</p>
-        <div style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:26px">
-          <a href="#lanzamiento" class="kz-btn" style="background:var(--gold);color:var(--inv)">Avísame del lanzamiento</a>
-          <a href="#tarjetas" class="kz-btn" style="border:1px solid var(--ln2);color:var(--tx)">Ver cómo funciona</a>
-        </div>
-        <div style="display:flex;flex-wrap:wrap;gap:20px;align-items:center">
-          <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--tx2)"><span style="color:var(--pos)">—</span>Plan gratuito en móvil</div>
-          <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--tx2)"><span style="color:var(--pos)">—</span>Sin conectar tu banco</div>
-        </div>
-      </div>
-      <div style="min-width:0;display:flex;justify-content:center">
-        <div style="width:300px;max-width:100%;border-radius:38px;border:1px solid var(--ln2);background:var(--bg);padding:12px;box-shadow:0 40px 90px rgba(0,0,0,.5)">
-          <div style="border-radius:28px;background:var(--bg);border:1px solid var(--ln);overflow:hidden">
-            <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 16px 10px;border-bottom:1px solid var(--ln)">
-              <div style="display:flex;align-items:center;gap:7px">
-                <svg viewBox="0 0 240 240" style="width:18px;height:18px"><path d="M206.7,104.7 A88 88 0 1 1 164,43.8" fill="none" stroke="#C7A977" stroke-width="17" stroke-linecap="round"></path></svg>
-                <span style="font-weight:700;font-size:14px;letter-spacing:-.02em">Kaizen</span>
-              </div>
-              <span class="kz-num" style="font-size:9.5px;color:var(--tx4)">agosto 2026</span>
-            </div>
-            <div style="padding:14px;display:flex;flex-direction:column;gap:11px">
-              <div class="kz-card" style="background:var(--sf);padding:15px;position:relative;overflow:hidden">
-                <div style="position:absolute;top:0;left:15px;right:15px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)"></div>
-                <div class="kz-eyebrow" style="font-size:9px;color:var(--gold)">Saldo neto actual</div>
-                <div class="kz-num" style="font-size:28px;font-weight:600;letter-spacing:-.04em;margin-top:3px">$48,230.55</div>
-                <div style="font-size:10.5px;color:var(--tx2);margin-top:4px"><span class="kz-num">$12,480.00</span> en deuda TDC</div>
-              </div>
-              <div class="kz-card" style="background:var(--sf);padding:14px">
-                <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px"><span style="font-size:12px;font-weight:600">Este mes</span><span class="kz-num" style="font-size:9.5px;color:var(--warn)">92%</span></div>
-                <div style="height:6px;border-radius:999px;background:var(--inp);overflow:hidden;margin-bottom:5px"><div style="width:92%;height:100%;background:var(--warn);border-radius:999px"></div></div>
-                <div style="display:flex;justify-content:space-between"><span class="kz-num" style="font-size:9.5px;color:var(--tx2)">$18,350.55</span><span class="kz-num" style="font-size:9.5px;color:var(--tx3)">de $20,000.00</span></div>
-                <div style="display:flex;justify-content:space-between;border-top:1px solid var(--ln);margin-top:9px;padding-top:8px"><span style="font-size:11px;color:var(--pos)">Asegurado del mes</span><span class="kz-num" style="font-size:11.5px;font-weight:600;color:var(--pos)">$20,000.00</span></div>
-              </div>
-              <div class="kz-card" style="background:var(--sf);padding:14px">
-                <div style="display:flex;align-items:center;gap:9px;padding-bottom:9px;border-bottom:1px solid var(--ln)">
-                  <div style="width:26px;height:26px;border-radius:8px;background:var(--negsub)"></div>
-                  <span style="flex:1;font-size:11.5px">Súper Chedraui</span>
-                  <span class="kz-num" style="font-size:11.5px;color:var(--neg)">−$842.50</span>
-                </div>
-                <div style="display:flex;align-items:center;gap:9px;padding-top:9px">
-                  <div style="width:26px;height:26px;border-radius:8px;background:var(--prosub)"></div>
-                  <span style="flex:1;font-size:11.5px">Laptop · 12 MSI</span>
-                  <span class="kz-num" style="font-size:11.5px;color:var(--neg)">−$1,388.89</span>
-                </div>
-              </div>
-            </div>
-            <div style="display:flex;align-items:center;justify-content:center;height:54px;border-top:1px solid var(--ln)">
-              <div style="width:44px;height:44px;border-radius:999px;background:var(--gold);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(199,169,119,.35)"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0B0B0C" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="funciones" style="border-bottom:1px solid var(--ln);padding:74px 0">
-    <div class="kz-sec">
-      <div class="kz-eyebrow" style="color:var(--gold);margin-bottom:14px">Lo que hace</div>
-      <h2 class="kz-h2" style="max-width:640px;margin-bottom:14px">Todo el control, sin hojas de cálculo</h2>
-      <p class="kz-p" style="color:var(--tx2);max-width:620px;margin-bottom:38px">Siete piezas que trabajan juntas. Registras una vez y aparece donde tiene que aparecer: en tu saldo, en tu presupuesto, en tu calendario y en tu análisis del mes.</p>
-      <div class="kz-grid">
-
-        <div class="kz-card" style="background:var(--sf);border:1px solid var(--ln)">
-          <div style="width:38px;height:38px;border-radius:11px;background:var(--goldsub);display:flex;align-items:center;justify-content:center;color:var(--gold);margin-bottom:14px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="2"></rect><path d="M2 10h20"></path></svg></div>
-          <div style="font-size:15.5px;font-weight:600;margin-bottom:7px">Tarjetas de crédito reales</div>
-          <p class="kz-p" style="font-size:13.5px;color:var(--tx2)">Fecha de corte, fecha límite y pago mínimo. Cuando pagas tu corte, la tarjeta pasa a mostrar la proyección del siguiente: lo que ya llevas acumulado y lo que te va a llegar.</p>
-        </div>
-
-        <div class="kz-card" style="background:var(--sf);border:1px solid var(--ln)">
-          <div style="width:38px;height:38px;border-radius:11px;background:var(--prosub);display:flex;align-items:center;justify-content:center;color:var(--pro);margin-bottom:14px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18M8 14h2M14 14h2M8 18h2M14 18h2"></path></svg></div>
-          <div style="font-size:15.5px;font-weight:600;margin-bottom:7px">Meses sin intereses (y con)</div>
-          <p class="kz-p" style="font-size:13.5px;color:var(--tx2)">Escribes el total de la compra y eliges el plazo; Kaizen calcula la mensualidad y lleva el conteo de pagos. Distingue MSI de MCI y te dice cuánto llevas y cuánto falta.</p>
-        </div>
-
-        <div class="kz-card" style="background:var(--sf);border:1px solid var(--ln)">
-          <div style="width:38px;height:38px;border-radius:11px;background:var(--goldsub);display:flex;align-items:center;justify-content:center;color:var(--gold);margin-bottom:14px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"></path></svg></div>
-          <div style="font-size:15.5px;font-weight:600;margin-bottom:7px">Captura en dos toques</div>
-          <p class="kz-p" style="font-size:13.5px;color:var(--tx2)">Todo el formulario en una sola pantalla, con lo más probable ya elegido. Escribes el monto y guardas. Si necesitas cambiar cuenta, categoría o fecha, están ahí mismo.</p>
-        </div>
-
-        <div class="kz-card" style="background:var(--sf);border:1px solid var(--ln)">
-          <div style="width:38px;height:38px;border-radius:11px;background:var(--possub);display:flex;align-items:center;justify-content:center;color:var(--pos);margin-bottom:14px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
-          <div style="font-size:15.5px;font-weight:600;margin-bottom:7px">Monto asegurado del mes</div>
-          <p class="kz-p" style="font-size:13.5px;color:var(--tx2)">Defines cuánto apartas sí o sí cada mes. Tu presupuesto de gasto se calcula solo y te avisamos antes de que un gasto se coma lo que tenías guardado.</p>
-        </div>
-
-        <div class="kz-card" style="background:var(--sf);border:1px solid var(--ln)">
-          <div style="width:38px;height:38px;border-radius:11px;background:var(--warnsub);display:flex;align-items:center;justify-content:center;color:var(--warn);margin-bottom:14px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2"></rect><path d="M16 2v4M8 2v4M3 10h18"></path></svg></div>
-          <div style="font-size:15.5px;font-weight:600;margin-bottom:7px">Calendario financiero</div>
-          <p class="kz-p" style="font-size:13.5px;color:var(--tx2)">Tus cortes, tus vencimientos y tus depósitos de nómina en un mismo mes. Con el resumen de lo que viene en los próximos siete días.</p>
-        </div>
-
-        <div class="kz-card" style="background:var(--sf);border:1px solid var(--ln)">
-          <div style="width:38px;height:38px;border-radius:11px;background:var(--goldsub);display:flex;align-items:center;justify-content:center;color:var(--gold);margin-bottom:14px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21.2 15.9A10 10 0 1 1 8 2.8"></path><path d="M22 12A10 10 0 0 0 12 2v10Z"></path></svg></div>
-          <div style="font-size:15.5px;font-weight:600;margin-bottom:7px">Análisis por categoría</div>
-          <p class="kz-p" style="font-size:13.5px;color:var(--tx2)">A dónde se fue tu dinero por semana, mes, medio año o año. Tocas una categoría y ves los movimientos que la formaron.</p>
-        </div>
-
-        <div class="kz-card" style="background:var(--sf);border:1px solid var(--ln)">
-          <div style="width:38px;height:38px;border-radius:11px;background:var(--possub);display:flex;align-items:center;justify-content:center;color:var(--pos);margin-bottom:14px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg></div>
-          <div style="font-size:15.5px;font-weight:600;margin-bottom:7px">Ingresos recurrentes</div>
-          <p class="kz-p" style="font-size:13.5px;color:var(--tx2)">Nómina, freelance o rentas: semanal, quincenal, mensual o anual. Se registran en su fecha y ajustan el fin de semana al viernes.</p>
-        </div>
-
-        <div class="kz-card" style="background:var(--sf);border:1px dashed var(--goldmut);display:flex;flex-direction:column;justify-content:center">
-          <div class="kz-eyebrow" style="font-size:9.5px;color:var(--gold);margin-bottom:8px">Sin bancos de por medio</div>
-          <p class="kz-p" style="font-size:13.5px;color:var(--tx2)">Kaizen no se conecta a tu banco ni mueve tu dinero. Tú registras, la app calcula. Tus datos son tuyos.</p>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <div id="tarjetas" style="border-bottom:1px solid var(--ln);padding:74px 0;background:var(--inp)">
-    <div class="kz-sec">
-      <div class="kz-grid-2">
-        <div style="min-width:0">
-          <div class="kz-eyebrow" style="color:var(--gold);margin-bottom:14px">La pieza que nadie resuelve</div>
-          <h2 class="kz-h2" style="margin-bottom:16px">Tu tarjeta cambia de lente según cómo vayas</h2>
-          <p class="kz-p" style="color:var(--tx2);margin-bottom:26px">Una TDC no es un número fijo. Kaizen la muestra en el estado en que realmente está, y te dice qué hacer en cada uno.</p>
-          <div style="display:flex;flex-direction:column;gap:14px">
-            <div style="display:flex;gap:13px">
-              <span style="width:9px;height:9px;border-radius:999px;background:var(--neg);margin-top:6px;flex:none"></span>
-              <div><div style="font-size:14px;font-weight:600;margin-bottom:3px">Con deuda al corte</div><p class="kz-p" style="font-size:13px;color:var(--tx2)">Ves lo que debes pagar antes de tu fecha límite y cuánto llevas cubierto si hiciste un abono parcial.</p></div>
-            </div>
-            <div style="display:flex;gap:13px">
-              <span style="width:9px;height:9px;border-radius:999px;background:var(--goldsoft);margin-top:6px;flex:none"></span>
-              <div><div style="font-size:14px;font-weight:600;margin-bottom:3px">Corte ya pagado</div><p class="kz-p" style="font-size:13px;color:var(--tx2)">La tarjeta proyecta tu siguiente corte: gastos posteriores, cuotas de meses del ciclo y tu saldo a favor, desglosado.</p></div>
-            </div>
-            <div style="display:flex;gap:13px">
-              <span style="width:9px;height:9px;border-radius:999px;background:var(--warn);margin-top:6px;flex:none"></span>
-              <div><div style="font-size:14px;font-weight:600;margin-bottom:3px">Pago vencido</div><p class="kz-p" style="font-size:13px;color:var(--tx2)">Te lo decimos sin rodeos, con los días de atraso y el mínimo a registrar para que tus proyecciones sigan siendo útiles.</p></div>
-            </div>
-          </div>
-        </div>
-        <div style="min-width:0;display:flex;flex-direction:column;gap:14px">
-          <div class="kz-card" style="background:var(--sf);border:1px solid var(--ln);position:relative;overflow:hidden">
-            <div style="position:absolute;top:0;left:22px;right:22px;height:2px;background:linear-gradient(90deg,transparent,var(--goldsoft),transparent)"></div>
-            <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
-              <div style="width:32px;height:32px;border-radius:10px;background:var(--goldsub);display:flex;align-items:center;justify-content:center;color:var(--gold)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="2"></rect><path d="M2 10h20"></path></svg></div>
-              <div style="flex:1"><div style="font-size:13.5px;font-weight:600">Citibanamex Oro</div><div style="font-size:10.5px;color:var(--tx3)">Crédito</div></div>
-              <span class="kz-num" style="font-size:9px;color:var(--pos);background:var(--possub);border-radius:999px;padding:3px 9px">CORTE PAGADO</span>
-            </div>
-            <div class="kz-eyebrow" style="font-size:9.5px;color:var(--goldsoft)">Proyección próximo corte</div>
-            <div class="kz-num" style="font-size:30px;font-weight:600;color:var(--goldsoft);letter-spacing:-.03em;margin:2px 0 12px">$4,917.78</div>
-            <div style="background:var(--inp);border-radius:12px;padding:12px 14px">
-              <div style="display:flex;justify-content:space-between;padding:3px 0"><span style="font-size:12px;color:var(--tx2)">Gastos después del corte</span><span class="kz-num" style="font-size:12px">$2,640.00</span></div>
-              <div style="display:flex;justify-content:space-between;padding:3px 0"><span style="font-size:12px;color:var(--tx2)">Cuotas de meses del ciclo</span><span class="kz-num" style="font-size:12px">$2,777.78</span></div>
-              <div style="display:flex;justify-content:space-between;padding:3px 0"><span style="font-size:12px;color:var(--tx2)">Saldo a favor</span><span class="kz-num" style="font-size:12px;color:var(--pos)">−$500.00</span></div>
-            </div>
-          </div>
-          <div class="kz-card" style="background:var(--sf);border:1px solid var(--ln);padding:16px 20px;display:flex;align-items:center;gap:12px">
-            <div style="width:28px;height:28px;border-radius:999px;background:var(--warnsub);display:flex;align-items:center;justify-content:center;color:var(--warn);flex:none"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 3"></path></svg></div>
-            <span style="font-size:13px;color:var(--tx2);line-height:1.5">Te avisamos antes del corte y antes de la fecha límite. También si tu gasto del mes se acerca a tu monto asegurado.</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div style="border-bottom:1px solid var(--ln);padding:74px 0">
-    <div class="kz-sec">
-      <div class="kz-eyebrow" style="color:var(--gold);margin-bottom:14px">Cómo se usa</div>
-      <h2 class="kz-h2" style="max-width:560px;margin-bottom:38px">Tres minutos para configurarla. Segundos para usarla.</h2>
-      <div class="kz-grid">
-        <div class="kz-card" style="background:var(--sf);border:1px solid var(--ln)">
-          <div class="kz-num" style="font-size:12px;color:var(--gold);margin-bottom:12px">01</div>
-          <div style="font-size:15.5px;font-weight:600;margin-bottom:7px">Da de alta tus cuentas</div>
-          <p class="kz-p" style="font-size:13.5px;color:var(--tx2)">Débito, crédito, cheques, ahorro, efectivo o inversión. En las tarjetas capturas límite, día de corte y tu deuda al corte actual.</p>
-        </div>
-        <div class="kz-card" style="background:var(--sf);border:1px solid var(--ln)">
-          <div class="kz-num" style="font-size:12px;color:var(--gold);margin-bottom:12px">02</div>
-          <div style="font-size:15.5px;font-weight:600;margin-bottom:7px">Registra tu ingreso y lo que aseguras</div>
-          <p class="kz-p" style="font-size:13.5px;color:var(--tx2)">Tu nómina con su frecuencia y el monto que apartas cada mes. Desde ahí Kaizen ya sabe con cuánto cuentas para gastar.</p>
-        </div>
-        <div class="kz-card" style="background:var(--sf);border:1px solid var(--ln)">
-          <div class="kz-num" style="font-size:12px;color:var(--gold);margin-bottom:12px">03</div>
-          <div style="font-size:15.5px;font-weight:600;margin-bottom:7px">Captura como vayas gastando</div>
-          <p class="kz-p" style="font-size:13.5px;color:var(--tx2)">Monto y guardar. Tu saldo, tu presupuesto, tu calendario y tus meses se actualizan al instante.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="planes" style="border-bottom:1px solid var(--ln);padding:74px 0;background:var(--inp)">
-    <div class="kz-sec">
-      <div class="kz-eyebrow" style="color:var(--gold);margin-bottom:14px">Planes</div>
-      <h2 class="kz-h2" style="max-width:600px;margin-bottom:14px">Gratis en tu teléfono. Premium en todas tus pantallas.</h2>
-      <p class="kz-p" style="color:var(--tx2);max-width:600px;margin-bottom:38px">El plan gratuito trae todo el control desde tu teléfono, sin recortes en cuentas, movimientos ni meses. Premium añade la nube y el acceso desde donde quieras.</p>
-      <div class="kz-grid-plans">
-
-        <div class="kz-card" style="background:var(--sf);border:1px solid var(--ln)">
-          <div style="font-size:15px;font-weight:600;margin-bottom:4px">Gratuito</div>
-          <div style="display:flex;align-items:baseline;gap:7px;margin-bottom:6px"><span class="kz-num" style="font-size:34px;font-weight:700;letter-spacing:-.03em">$0</span><span style="font-size:12.5px;color:var(--tx3)">para siempre</span></div>
-          <p class="kz-p" style="font-size:12.5px;color:var(--tx3);margin-bottom:20px">Desde tu teléfono, con todas las funciones de control.</p>
-          <div style="display:flex;flex-direction:column;gap:11px;margin-bottom:24px">
-            <div style="display:flex;gap:10px;font-size:13.5px;color:var(--tx2)"><span style="color:var(--pos)">—</span>Cuentas y tarjetas ilimitadas</div>
-            <div style="display:flex;gap:10px;font-size:13.5px;color:var(--tx2)"><span style="color:var(--pos)">—</span>Meses sin y con intereses</div>
-            <div style="display:flex;gap:10px;font-size:13.5px;color:var(--tx2)"><span style="color:var(--pos)">—</span>Presupuesto y monto asegurado</div>
-            <div style="display:flex;gap:10px;font-size:13.5px;color:var(--tx2)"><span style="color:var(--pos)">—</span>Calendario y análisis por categoría</div>
-            <div style="display:flex;gap:10px;font-size:13.5px;color:var(--tx4)"><span>—</span>Solo en teléfono móvil</div>
-            <div style="display:flex;gap:10px;font-size:13.5px;color:var(--tx4)"><span>—</span>Sin sincronización en la nube</div>
-            <div style="display:flex;gap:10px;font-size:13.5px;color:var(--tx4)"><span>—</span>Un solo dispositivo a la vez</div>
-          </div>
-          <a href="#lanzamiento" class="kz-btn" style="border:1px solid var(--ln2);color:var(--tx);width:100%;box-sizing:border-box">Avísame cuando salga</a>
-        </div>
-
-        <div class="kz-card" style="background:var(--sf);border:1.5px solid var(--gold);position:relative;overflow:hidden">
-          <div style="position:absolute;top:0;left:22px;right:22px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)"></div>
-          <div style="display:flex;align-items:center;gap:9px;margin-bottom:4px">
-            <span style="font-size:15px;font-weight:600">Premium</span>
-            <span class="kz-num" style="font-size:9px;font-weight:700;color:var(--inv);background:var(--pro);border-radius:5px;padding:2px 7px">PRO</span>
-          </div>
-          <div style="display:flex;align-items:baseline;gap:7px;margin-bottom:6px"><span class="kz-num" style="font-size:34px;font-weight:700;letter-spacing:-.03em;color:var(--gold)">$79</span><span style="font-size:12.5px;color:var(--tx3)">al mes, pagando anual</span></div>
-          <p class="kz-p" style="font-size:12.5px;color:var(--tx3);margin-bottom:20px">O $99 al mes. Ahorras 20% con el plan anual.</p>
-          <div style="display:flex;flex-direction:column;gap:11px;margin-bottom:24px">
-            <div style="display:flex;gap:10px;font-size:13.5px;color:var(--tx2)"><span style="color:var(--gold)">—</span>Todo lo del plan gratuito</div>
-            <div style="display:flex;gap:10px;font-size:13.5px;color:var(--tx2)"><span style="color:var(--gold)">—</span>Sincronización en la nube</div>
-            <div style="display:flex;gap:10px;font-size:13.5px;color:var(--tx2)"><span style="color:var(--gold)">—</span>Acceso desde otros dispositivos, sin límite</div>
-            <div style="display:flex;gap:10px;font-size:13.5px;color:var(--tx2)"><span style="color:var(--gold)">—</span>Categorías personalizables</div>
-            <div style="display:flex;gap:10px;font-size:13.5px;color:var(--tx2)"><span style="color:var(--gold)">—</span>Soporte prioritario</div>
-            <div style="display:flex;gap:10px;font-size:13.5px;color:var(--tx2)"><span style="color:var(--gold)">—</span>Acceso anticipado a lo que viene</div>
-          </div>
-          <a href="#lanzamiento" class="kz-btn" style="background:var(--gold);color:var(--inv);width:100%;box-sizing:border-box">Quiero Premium al salir</a>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <div id="futuro" style="border-bottom:1px solid var(--ln);padding:74px 0">
-    <div class="kz-sec">
-      <div class="kz-eyebrow" style="color:var(--gold);margin-bottom:14px">Qué sigue</div>
-      <h2 class="kz-h2" style="max-width:600px;margin-bottom:14px">Kaizen significa mejora continua</h2>
-      <p class="kz-p" style="color:var(--tx2);max-width:600px;margin-bottom:38px">El nombre no es decorativo: la app crece por versiones pequeñas y constantes. Esto es lo que ya está listo, lo que construimos ahora y lo que sigue.</p>
-      <div class="kz-card" style="background:var(--sf);border:1px solid var(--ln);margin-bottom:16px">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
-          <span class="kz-num" style="font-size:9px;color:var(--pos);background:var(--possub);border-radius:999px;padding:3px 9px">YA FUNCIONA</span>
-          <span style="font-size:14px;font-weight:600">Listo y probado</span>
-        </div>
-        <div style="display:flex;flex-wrap:wrap;gap:8px">
-          <span style="font-size:12.5px;color:var(--tx2);border:1px solid var(--ln);border-radius:999px;padding:7px 13px">Dashboard completo</span>
-          <span style="font-size:12.5px;color:var(--tx2);border:1px solid var(--ln);border-radius:999px;padding:7px 13px">Captura de gastos e ingresos</span>
-          <span style="font-size:12.5px;color:var(--tx2);border:1px solid var(--ln);border-radius:999px;padding:7px 13px">Transferencias entre tus cuentas</span>
-          <span style="font-size:12.5px;color:var(--tx2);border:1px solid var(--ln);border-radius:999px;padding:7px 13px">Análisis por categoría</span>
-          <span style="font-size:12.5px;color:var(--tx2);border:1px solid var(--ln);border-radius:999px;padding:7px 13px">Tarjetas, corte y meses</span>
-          <span style="font-size:12.5px;color:var(--tx2);border:1px solid var(--ln);border-radius:999px;padding:7px 13px">Sincronización local y en la nube</span>
-        </div>
-      </div>
-      <div class="kz-grid">
-        <div class="kz-card" style="background:var(--sf);border:1px solid var(--ln)">
-          <span class="kz-num" style="font-size:9px;color:var(--gold);background:var(--goldsub);border-radius:999px;padding:3px 9px">EN DESARROLLO</span>
-          <div style="font-size:15.5px;font-weight:600;margin:13px 0 7px">Montos programados</div>
-          <p class="kz-p" style="font-size:13.5px;color:var(--tx2)">Programar una cantidad fija cada mes, cada quincena o cada año, para que se registre sola en su fecha.</p>
-        </div>
-        <div class="kz-card" style="background:var(--sf);border:1px solid var(--ln)">
-          <span class="kz-num" style="font-size:9px;color:var(--gold);background:var(--goldsub);border-radius:999px;padding:3px 9px">EN DESARROLLO</span>
-          <div style="font-size:15.5px;font-weight:600;margin:13px 0 7px">Tu techo y tu piso del mes</div>
-          <p class="kz-p" style="font-size:13.5px;color:var(--tx2)">Marcar cuánto es tu máximo a gastar y con cuánto cuentas realmente cada mes, visible en todo momento.</p>
-        </div>
-        <div class="kz-card" style="background:var(--sf);border:1px solid var(--ln)">
-          <span class="kz-num" style="font-size:9px;color:var(--warn);background:var(--warnsub);border-radius:999px;padding:3px 9px">PLANEADO</span>
-          <div style="font-size:15.5px;font-weight:600;margin:13px 0 7px">Reportes exportables</div>
-          <p class="kz-p" style="font-size:13.5px;color:var(--tx2)">Tu año en un archivo: resumen por categoría, por cuenta y por tarjeta, listo para compartir.</p>
-        </div>
-        <div class="kz-card" style="background:var(--sf);border:1px solid var(--ln)">
-          <span class="kz-num" style="font-size:9px;color:var(--warn);background:var(--warnsub);border-radius:999px;padding:3px 9px">PLANEADO</span>
-          <div style="font-size:15.5px;font-weight:600;margin:13px 0 7px">Bloqueo biométrico</div>
-          <p class="kz-p" style="font-size:13.5px;color:var(--tx2)">Entrar con huella o rostro, y mantener tus cifras fuera de la vista de quien tome tu teléfono.</p>
-        </div>
-        <div class="kz-card" style="background:var(--sf);border:1px solid var(--ln)">
-          <span class="kz-num" style="font-size:9px;color:var(--tx3);background:var(--sf2);border-radius:999px;padding:3px 9px">EN LA MESA</span>
-          <div style="font-size:15.5px;font-weight:600;margin:13px 0 7px">Presupuesto por categoría</div>
-          <p class="kz-p" style="font-size:13.5px;color:var(--tx2)">Un techo para alimentación, otro para ocio. El mismo aviso del 80%, pero por rubro.</p>
-        </div>
-        <div class="kz-card" style="background:var(--sf);border:1px solid var(--ln)">
-          <span class="kz-num" style="font-size:9px;color:var(--warn);background:var(--warnsub);border-radius:999px;padding:3px 9px">PLANEADO</span>
-          <div style="font-size:15.5px;font-weight:600;margin:13px 0 7px">Gastos compartidos</div>
-          <p class="kz-p" style="font-size:13.5px;color:var(--tx2)">Registrar y dar seguimiento a gastos con las personas que tú elijas, sin mezclar las finanzas de cada quien.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="lanzamiento" style="padding:84px 0;position:relative;overflow:hidden">
-    <div style="position:absolute;bottom:-320px;left:50%;transform:translateX(-50%);width:820px;height:820px;background:radial-gradient(circle,var(--goldsub) 0%,transparent 62%);pointer-events:none"></div>
-    <div class="kz-sec" style="position:relative;text-align:center">
-      <svg viewBox="0 0 240 240" style="width:52px;height:52px;margin-bottom:20px"><path d="M206.7,104.7 A88 88 0 1 1 164,43.8" fill="none" stroke="#C7A977" stroke-width="15" stroke-linecap="round" stroke-dasharray="436" style="animation:kz-draw 3.6s cubic-bezier(.45,0,.55,1) infinite"></path></svg>
-      <h2 class="kz-h2" style="max-width:620px;margin:0 auto 16px">Kaizen está por lanzarse</h2>
-      <p class="kz-p" style="color:var(--tx2);max-width:520px;margin:0 auto 28px">Seguimos puliendo los últimos detalles y aún no tenemos fecha. Déjanos tu correo y serás de los primeros en entrar cuando abramos.</p>
-
-      <form id="waitlist-form" style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:480px;margin:0 auto" novalidate>
-        <input class="kz-input" type="email" id="waitlist-email" name="email" required placeholder="tu@correo.mx" autocomplete="email">
-        <input class="kz-hp" type="text" id="waitlist-hp" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <button type="submit" class="kz-btn" id="waitlist-submit" style="background:var(--gold);color:var(--inv);flex:none">Avísame</button>
-      </form>
-      <p class="kz-p" id="waitlist-msg" role="status" style="font-size:12px;color:var(--tx3);margin-top:14px;min-height:16px">Un solo correo cuando abramos. Nada más.</p>
-    </div>
-  </div>
-
-  <div style="border-top:1px solid var(--ln);padding:30px 0">
-    <div class="kz-sec" style="display:flex;flex-wrap:wrap;align-items:center;gap:16px">
-      <div style="display:flex;align-items:center;gap:8px">
-        <svg viewBox="0 0 240 240" style="width:18px;height:18px"><path d="M206.7,104.7 A88 88 0 1 1 164,43.8" fill="none" stroke="#C7A977" stroke-width="17" stroke-linecap="round"></path></svg>
-        <span style="font-size:13px;font-weight:600">Kaizen</span>
-      </div>
-      <span class="kz-num" style="font-size:10px;color:var(--tx3);letter-spacing:.2em">改善 · MEJORA CONTINUA</span>
-      <div style="flex:1"></div>
-      <span style="font-size:11.5px;color:var(--tx3)">© 2026 Kaizen. Todos los derechos reservados.</span>
-    </div>
-  </div>
-
-</div>
-
-<script>
-(function () {
-  var form = document.getElementById('waitlist-form');
-  var emailInput = document.getElementById('waitlist-email');
-  var hpInput = document.getElementById('waitlist-hp');
-  var msg = document.getElementById('waitlist-msg');
-  var btn = document.getElementById('waitlist-submit');
-  var defaultMsg = msg.textContent;
-
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    if (hpInput.value) {
-      return; // honeypot: bot filled a field humans never see
+      100% {
+        stroke-dashoffset: -436
+      }
     }
 
-    var email = emailInput.value.trim();
-    if (!email) return;
+    html {
+      scroll-behavior: smooth
+    }
 
-    btn.disabled = true;
-    var originalLabel = btn.textContent;
-    btn.textContent = 'Enviando…';
-    msg.style.color = 'var(--tx3)';
-    msg.textContent = 'Guardando tu correo…';
+    body {
+      margin: 0;
+      background: #0B0B0C;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased
+    }
 
-    fetch('/api/subscribe', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: email, company: hpInput.value })
-    })
-      .then(function (res) {
-        return res.json().catch(function () { return {}; }).then(function (data) {
-          return { ok: res.ok, data: data };
-        });
-      })
-      .then(function (result) {
-        if (result.ok) {
-          msg.style.color = 'var(--pos)';
-          msg.textContent = '¡Listo! Quedaste registrado con ' + email + '.';
-          form.reset();
-        } else {
-          msg.style.color = 'var(--neg)';
-          msg.textContent = (result.data && result.data.error) || 'Algo salió mal. Intenta de nuevo.';
+    a {
+      color: #C7A977;
+      text-decoration: none
+    }
+
+    a:hover {
+      color: #E2CB9E
+    }
+
+    .kz-lp {
+      --bg: #0B0B0C;
+      --sf: #1D1D21;
+      --sf2: #2A2A30;
+      --inp: #141417;
+      --ln: rgba(255, 255, 255, .08);
+      --ln2: rgba(255, 255, 255, .14);
+      --tx: #F4F2EC;
+      --tx2: #9C9A93;
+      --tx3: #7C7A73;
+      --tx4: #56544E;
+      --inv: #0B0B0C;
+      --gold: #C7A977;
+      --goldsoft: #E2CB9E;
+      --golddeep: #9C7E4E;
+      --goldsub: rgba(199, 169, 119, .12);
+      --goldmut: rgba(199, 169, 119, .30);
+      --pos: #6FAE8F;
+      --possub: rgba(111, 174, 143, .12);
+      --warn: #D9A441;
+      --warnsub: rgba(217, 164, 65, .12);
+      --neg: #C97B6B;
+      --negsub: rgba(201, 123, 107, .12);
+      --pro: #E2CB9E;
+      --prosub: rgba(226, 203, 158, .12);
+      --promut: rgba(226, 203, 158, .30)
+    }
+
+    .kz-num {
+      font-family: ui-monospace, "Courier New", monospace;
+      font-variant-numeric: tabular-nums
+    }
+
+    .kz-eyebrow {
+      font-family: ui-monospace, "Courier New", monospace;
+      font-size: 11px;
+      letter-spacing: .14em;
+      text-transform: uppercase
+    }
+
+    .kz-sec {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 24px
+    }
+
+    .kz-h2 {
+      font-size: clamp(26px, 3.4vw, 40px);
+      font-weight: 700;
+      letter-spacing: -.03em;
+      line-height: 1.15;
+      margin: 0;
+      text-wrap: pretty
+    }
+
+    .kz-p {
+      font-size: 15px;
+      line-height: 1.7;
+      margin: 0;
+      text-wrap: pretty
+    }
+
+    .kz-card {
+      border-radius: 20px;
+      padding: 22px 24px
+    }
+
+    .kz-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-radius: 14px;
+      padding: 15px 26px;
+      font-size: 14.5px;
+      font-weight: 600;
+      min-height: 48px;
+      box-sizing: border-box;
+      border: none;
+      cursor: pointer;
+      font-family: inherit
+    }
+
+    .kz-btn:disabled {
+      opacity: .6;
+      cursor: default
+    }
+
+    .kz-nav {
+      display: flex;
+      align-items: center;
+      gap: 22px
+    }
+
+    .kz-grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr))
+    }
+
+    .kz-grid-2 {
+      display: grid;
+      gap: 40px;
+      align-items: center;
+      grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr))
+    }
+
+    .kz-grid-hero {
+      display: grid;
+      gap: 44px;
+      align-items: center;
+      grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr))
+    }
+
+    .kz-grid-plans {
+      display: grid;
+      gap: 18px;
+      align-items: start;
+      grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr))
+    }
+
+    .kz-input {
+      flex: 1;
+      min-width: 200px;
+      background: var(--sf);
+      border: 1px solid var(--ln2);
+      border-radius: 14px;
+      padding: 15px 18px;
+      font-size: 14px;
+      color: var(--tx);
+      min-height: 48px;
+      box-sizing: border-box;
+      font-family: inherit
+    }
+
+    .kz-input::placeholder {
+      color: var(--tx3)
+    }
+
+    .kz-input:focus {
+      outline: 2px solid var(--gold);
+      outline-offset: 1px
+    }
+
+    .kz-hp {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden
+    }
+
+    @media (max-width:720px) {
+      .kz-nav {
+        display: none
+      }
+
+      .kz-sec {
+        padding: 0 18px
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="kz-lp" data-t="dark" style="background:var(--bg);color:var(--tx);min-height:100vh;overflow-x:hidden">
+
+    <div
+      style="position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:color-mix(in oklab,var(--bg) 82%,transparent);border-bottom:1px solid var(--ln)">
+      <div class="kz-sec" style="display:flex;align-items:center;gap:16px;height:66px">
+        <a href="#top" style="display:flex;align-items:center;gap:9px;color:var(--tx)">
+          <svg viewBox="0 0 240 240" style="width:26px;height:26px">
+            <path d="M206.7,104.7 A88 88 0 1 1 164,43.8" fill="none" stroke="#C7A977" stroke-width="16"
+              stroke-linecap="round"></path>
+          </svg>
+          <span style="font-weight:700;font-size:17px;letter-spacing:-.02em">Kaizen</span>
+        </a>
+        <div style="flex:1"></div>
+        <div class="kz-nav">
+          <a href="#funciones" style="font-size:13.5px;color:var(--tx2)">Funciones</a>
+          <a href="#tarjetas" style="font-size:13.5px;color:var(--tx2)">Tarjetas</a>
+          <a href="#planes" style="font-size:13.5px;color:var(--tx2)">Planes</a>
+          <a href="#futuro" style="font-size:13.5px;color:var(--tx2)">Qué sigue</a>
+        </div>
+        <a href="#lanzamiento" class="kz-btn"
+          style="background:var(--gold);color:var(--inv);padding:11px 20px;font-size:13.5px;min-height:40px;flex:none">Avísame</a>
+      </div>
+    </div>
+
+    <div id="top" style="position:relative;overflow:hidden;border-bottom:1px solid var(--ln)">
+      <div
+        style="position:absolute;top:-180px;left:50%;transform:translateX(-50%);width:900px;height:900px;background:radial-gradient(circle,var(--goldsub) 0%,transparent 62%);pointer-events:none">
+      </div>
+      <div class="kz-sec kz-grid-hero" style="position:relative;padding-top:70px;padding-bottom:70px">
+        <div style="min-width:0">
+          <div
+            style="display:inline-flex;align-items:center;gap:9px;border:1px solid var(--goldmut);background:var(--goldsub);border-radius:999px;padding:7px 14px;margin-bottom:20px">
+            <span style="width:7px;height:7px;border-radius:999px;background:var(--gold)"></span>
+            <span class="kz-eyebrow" style="font-size:10px;color:var(--gold)">Próximamente · en desarrollo</span>
+          </div>
+          <h1
+            style="font-size:clamp(34px,5.2vw,56px);font-weight:700;letter-spacing:-.04em;line-height:1.08;margin:0 0 18px;text-wrap:balance">
+            Tus finanzas claras, incluso las de tu tarjeta de crédito.</h1>
+          <p class="kz-p" style="color:var(--tx2);font-size:16.5px;max-width:520px;margin-bottom:28px">Kaizen es la app
+            que sí entiende cómo funciona una TDC en México: fecha de corte, fecha límite, meses sin intereses y lo que
+            realmente vas a pagar el mes que entra. Registras un gasto en dos toques y el resto se calcula solo.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:26px">
+            <a href="#lanzamiento" class="kz-btn" style="background:var(--gold);color:var(--inv)">Avísame del
+              lanzamiento</a>
+            <a href="#tarjetas" class="kz-btn" style="border:1px solid var(--ln2);color:var(--tx)">Ver cómo funciona</a>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:20px;align-items:center">
+            <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--tx2)"><span
+                style="color:var(--pos)">—</span>Plan gratuito en móvil</div>
+            <div style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--tx2)"><span
+                style="color:var(--pos)">—</span>Sin conectar tu banco</div>
+          </div>
+        </div>
+        <div style="min-width:0;display:flex;justify-content:center">
+          <div
+            style="width:300px;max-width:100%;border-radius:38px;border:1px solid var(--ln2);background:var(--bg);padding:12px;box-shadow:0 40px 90px rgba(0,0,0,.5)">
+            <div style="border-radius:28px;background:var(--bg);border:1px solid var(--ln);overflow:hidden">
+              <div
+                style="display:flex;align-items:center;justify-content:space-between;padding:16px 16px 10px;border-bottom:1px solid var(--ln)">
+                <div style="display:flex;align-items:center;gap:7px">
+                  <svg viewBox="0 0 240 240" style="width:18px;height:18px">
+                    <path d="M206.7,104.7 A88 88 0 1 1 164,43.8" fill="none" stroke="#C7A977" stroke-width="17"
+                      stroke-linecap="round"></path>
+                  </svg>
+                  <span style="font-weight:700;font-size:14px;letter-spacing:-.02em">Kaizen</span>
+                </div>
+                <span class="kz-num" style="font-size:9.5px;color:var(--tx4)">agosto 2026</span>
+              </div>
+              <div style="padding:14px;display:flex;flex-direction:column;gap:11px">
+                <div class="kz-card" style="background:var(--sf);padding:15px;position:relative;overflow:hidden">
+                  <div
+                    style="position:absolute;top:0;left:15px;right:15px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)">
+                  </div>
+                  <div class="kz-eyebrow" style="font-size:9px;color:var(--gold)">Saldo neto actual</div>
+                  <div class="kz-num" style="font-size:28px;font-weight:600;letter-spacing:-.04em;margin-top:3px">
+                    $48,230.55</div>
+                  <div style="font-size:10.5px;color:var(--tx2);margin-top:4px"><span class="kz-num">$12,480.00</span>
+                    en deuda TDC</div>
+                </div>
+                <div class="kz-card" style="background:var(--sf);padding:14px">
+                  <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px"><span
+                      style="font-size:12px;font-weight:600">Este mes</span><span class="kz-num"
+                      style="font-size:9.5px;color:var(--warn)">92%</span></div>
+                  <div style="height:6px;border-radius:999px;background:var(--inp);overflow:hidden;margin-bottom:5px">
+                    <div style="width:92%;height:100%;background:var(--warn);border-radius:999px"></div>
+                  </div>
+                  <div style="display:flex;justify-content:space-between"><span class="kz-num"
+                      style="font-size:9.5px;color:var(--tx2)">$18,350.55</span><span class="kz-num"
+                      style="font-size:9.5px;color:var(--tx3)">de $20,000.00</span></div>
+                  <div
+                    style="display:flex;justify-content:space-between;border-top:1px solid var(--ln);margin-top:9px;padding-top:8px">
+                    <span style="font-size:11px;color:var(--pos)">Asegurado del mes</span><span class="kz-num"
+                      style="font-size:11.5px;font-weight:600;color:var(--pos)">$20,000.00</span>
+                  </div>
+                </div>
+                <div class="kz-card" style="background:var(--sf);padding:14px">
+                  <div
+                    style="display:flex;align-items:center;gap:9px;padding-bottom:9px;border-bottom:1px solid var(--ln)">
+                    <div style="width:26px;height:26px;border-radius:8px;background:var(--negsub)"></div>
+                    <span style="flex:1;font-size:11.5px">Súper Chedraui</span>
+                    <span class="kz-num" style="font-size:11.5px;color:var(--neg)">−$842.50</span>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:9px;padding-top:9px">
+                    <div style="width:26px;height:26px;border-radius:8px;background:var(--prosub)"></div>
+                    <span style="flex:1;font-size:11.5px">Laptop · 12 MSI</span>
+                    <span class="kz-num" style="font-size:11.5px;color:var(--neg)">−$1,388.89</span>
+                  </div>
+                </div>
+              </div>
+              <div
+                style="display:flex;align-items:center;justify-content:center;height:54px;border-top:1px solid var(--ln)">
+                <div
+                  style="width:44px;height:44px;border-radius:999px;background:var(--gold);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(199,169,119,.35)">
+                  <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0B0B0C" stroke-width="2.5"
+                    stroke-linecap="round">
+                    <path d="M12 5v14M5 12h14"></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="funciones" style="border-bottom:1px solid var(--ln);padding:74px 0">
+      <div class="kz-sec">
+        <div class="kz-eyebrow" style="color:var(--gold);margin-bottom:14px">Lo que hace</div>
+        <h2 class="kz-h2" style="max-width:640px;margin-bottom:14px">Todo el control, sin hojas de cálculo</h2>
+        <p class="kz-p" style="color:var(--tx2);max-width:620px;margin-bottom:38px">Siete piezas que trabajan juntas.
+          Registras una vez y aparece donde tiene que aparecer: en tu saldo, en tu presupuesto, en tu calendario y en tu
+          análisis del mes.</p>
+        <div class="kz-grid">
+
+          <div class="kz-card" style="background:var(--sf);border:1px solid var(--ln)">
+            <div
+              style="width:38px;height:38px;border-radius:11px;background:var(--goldsub);display:flex;align-items:center;justify-content:center;color:var(--gold);margin-bottom:14px">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+                <path d="M2 10h20"></path>
+              </svg>
+            </div>
+            <div style="font-size:15.5px;font-weight:600;margin-bottom:7px">Tarjetas de crédito reales</div>
+            <p class="kz-p" style="font-size:13.5px;color:var(--tx2)">Fecha de corte, fecha límite y pago mínimo. Cuando
+              pagas tu corte, la tarjeta pasa a mostrar la proyección del siguiente: lo que ya llevas acumulado y lo que
+              te va a llegar.</p>
+          </div>
+
+          <div class="kz-card" style="background:var(--sf);border:1px solid var(--ln)">
+            <div
+              style="width:38px;height:38px;border-radius:11px;background:var(--prosub);display:flex;align-items:center;justify-content:center;color:var(--pro);margin-bottom:14px">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round">
+                <rect x="3" y="4" width="18" height="18" rx="2"></rect>
+                <path d="M16 2v4M8 2v4M3 10h18M8 14h2M14 14h2M8 18h2M14 18h2"></path>
+              </svg>
+            </div>
+            <div style="font-size:15.5px;font-weight:600;margin-bottom:7px">Meses sin intereses (y con)</div>
+            <p class="kz-p" style="font-size:13.5px;color:var(--tx2)">Escribes el total de la compra y eliges el plazo;
+              Kaizen calcula la mensualidad y lleva el conteo de pagos. Distingue MSI de MCI y te dice cuánto llevas y
+              cuánto falta.</p>
+          </div>
+
+          <div class="kz-card" style="background:var(--sf);border:1px solid var(--ln)">
+            <div
+              style="width:38px;height:38px;border-radius:11px;background:var(--goldsub);display:flex;align-items:center;justify-content:center;color:var(--gold);margin-bottom:14px">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                stroke-linecap="round">
+                <path d="M12 5v14M5 12h14"></path>
+              </svg>
+            </div>
+            <div style="font-size:15.5px;font-weight:600;margin-bottom:7px">Captura en dos toques</div>
+            <p class="kz-p" style="font-size:13.5px;color:var(--tx2)">Todo el formulario en una sola pantalla, con lo
+              más probable ya elegido. Escribes el monto y guardas. Si necesitas cambiar cuenta, categoría o fecha,
+              están ahí mismo.</p>
+          </div>
+
+          <div class="kz-card" style="background:var(--sf);border:1px solid var(--ln)">
+            <div
+              style="width:38px;height:38px;border-radius:11px;background:var(--possub);display:flex;align-items:center;justify-content:center;color:var(--pos);margin-bottom:14px">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <rect x="3" y="11" width="18" height="11" rx="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+            </div>
+            <div style="font-size:15.5px;font-weight:600;margin-bottom:7px">Monto asegurado del mes</div>
+            <p class="kz-p" style="font-size:13.5px;color:var(--tx2)">Defines cuánto apartas sí o sí cada mes. Tu
+              presupuesto de gasto se calcula solo y te avisamos antes de que un gasto se coma lo que tenías guardado.
+            </p>
+          </div>
+
+          <div class="kz-card" style="background:var(--sf);border:1px solid var(--ln)">
+            <div
+              style="width:38px;height:38px;border-radius:11px;background:var(--warnsub);display:flex;align-items:center;justify-content:center;color:var(--warn);margin-bottom:14px">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <rect x="3" y="4" width="18" height="18" rx="2"></rect>
+                <path d="M16 2v4M8 2v4M3 10h18"></path>
+              </svg>
+            </div>
+            <div style="font-size:15.5px;font-weight:600;margin-bottom:7px">Calendario financiero</div>
+            <p class="kz-p" style="font-size:13.5px;color:var(--tx2)">Tus cortes, tus vencimientos y tus depósitos de
+              nómina en un mismo mes. Con el resumen de lo que viene en los próximos siete días.</p>
+          </div>
+
+          <div class="kz-card" style="background:var(--sf);border:1px solid var(--ln)">
+            <div
+              style="width:38px;height:38px;border-radius:11px;background:var(--goldsub);display:flex;align-items:center;justify-content:center;color:var(--gold);margin-bottom:14px">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M21.2 15.9A10 10 0 1 1 8 2.8"></path>
+                <path d="M22 12A10 10 0 0 0 12 2v10Z"></path>
+              </svg>
+            </div>
+            <div style="font-size:15.5px;font-weight:600;margin-bottom:7px">Análisis por categoría</div>
+            <p class="kz-p" style="font-size:13.5px;color:var(--tx2)">A dónde se fue tu dinero por semana, mes, medio
+              año o año. Tocas una categoría y ves los movimientos que la formaron.</p>
+          </div>
+
+          <div class="kz-card" style="background:var(--sf);border:1px solid var(--ln)">
+            <div
+              style="width:38px;height:38px;border-radius:11px;background:var(--possub);display:flex;align-items:center;justify-content:center;color:var(--pos);margin-bottom:14px">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <rect x="3" y="7" width="18" height="13" rx="2"></rect>
+                <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+              </svg>
+            </div>
+            <div style="font-size:15.5px;font-weight:600;margin-bottom:7px">Ingresos recurrentes</div>
+            <p class="kz-p" style="font-size:13.5px;color:var(--tx2)">Nómina, freelance o rentas: semanal, quincenal,
+              mensual o anual. Se registran en su fecha y ajustan el fin de semana al viernes.</p>
+          </div>
+
+          <div class="kz-card"
+            style="background:var(--sf);border:1px dashed var(--goldmut);display:flex;flex-direction:column;justify-content:center">
+            <div class="kz-eyebrow" style="font-size:9.5px;color:var(--gold);margin-bottom:8px">Sin bancos de por medio
+            </div>
+            <p class="kz-p" style="font-size:13.5px;color:var(--tx2)">Kaizen no se conecta a tu banco ni mueve tu
+              dinero. Tú registras, la app calcula. Tus datos son tuyos.</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div id="tarjetas" style="border-bottom:1px solid var(--ln);padding:74px 0;background:var(--inp)">
+      <div class="kz-sec">
+        <div class="kz-grid-2">
+          <div style="min-width:0">
+            <div class="kz-eyebrow" style="color:var(--gold);margin-bottom:14px">La pieza que nadie resuelve</div>
+            <h2 class="kz-h2" style="margin-bottom:16px">Tu tarjeta cambia de lente según cómo vayas</h2>
+            <p class="kz-p" style="color:var(--tx2);margin-bottom:26px">Una TDC no es un número fijo. Kaizen la muestra
+              en el estado en que realmente está, y te dice qué hacer en cada uno.</p>
+            <div style="display:flex;flex-direction:column;gap:14px">
+              <div style="display:flex;gap:13px">
+                <span
+                  style="width:9px;height:9px;border-radius:999px;background:var(--neg);margin-top:6px;flex:none"></span>
+                <div>
+                  <div style="font-size:14px;font-weight:600;margin-bottom:3px">Con deuda al corte</div>
+                  <p class="kz-p" style="font-size:13px;color:var(--tx2)">Ves lo que debes pagar antes de tu fecha
+                    límite y cuánto llevas cubierto si hiciste un abono parcial.</p>
+                </div>
+              </div>
+              <div style="display:flex;gap:13px">
+                <span
+                  style="width:9px;height:9px;border-radius:999px;background:var(--goldsoft);margin-top:6px;flex:none"></span>
+                <div>
+                  <div style="font-size:14px;font-weight:600;margin-bottom:3px">Corte ya pagado</div>
+                  <p class="kz-p" style="font-size:13px;color:var(--tx2)">La tarjeta proyecta tu siguiente corte: gastos
+                    posteriores, cuotas de meses del ciclo y tu saldo a favor, desglosado.</p>
+                </div>
+              </div>
+              <div style="display:flex;gap:13px">
+                <span
+                  style="width:9px;height:9px;border-radius:999px;background:var(--warn);margin-top:6px;flex:none"></span>
+                <div>
+                  <div style="font-size:14px;font-weight:600;margin-bottom:3px">Pago vencido</div>
+                  <p class="kz-p" style="font-size:13px;color:var(--tx2)">Te lo decimos sin rodeos, con los días de
+                    atraso y el mínimo a registrar para que tus proyecciones sigan siendo útiles.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="min-width:0;display:flex;flex-direction:column;gap:14px">
+            <div class="kz-card"
+              style="background:var(--sf);border:1px solid var(--ln);position:relative;overflow:hidden">
+              <div
+                style="position:absolute;top:0;left:22px;right:22px;height:2px;background:linear-gradient(90deg,transparent,var(--goldsoft),transparent)">
+              </div>
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+                <div
+                  style="width:32px;height:32px;border-radius:10px;background:var(--goldsub);display:flex;align-items:center;justify-content:center;color:var(--gold)">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+                    <path d="M2 10h20"></path>
+                  </svg>
+                </div>
+                <div style="flex:1">
+                  <div style="font-size:13.5px;font-weight:600">Citibanamex Oro</div>
+                  <div style="font-size:10.5px;color:var(--tx3)">Crédito</div>
+                </div>
+                <span class="kz-num"
+                  style="font-size:9px;color:var(--pos);background:var(--possub);border-radius:999px;padding:3px 9px">CORTE
+                  PAGADO</span>
+              </div>
+              <div class="kz-eyebrow" style="font-size:9.5px;color:var(--goldsoft)">Proyección próximo corte</div>
+              <div class="kz-num"
+                style="font-size:30px;font-weight:600;color:var(--goldsoft);letter-spacing:-.03em;margin:2px 0 12px">
+                $4,917.78</div>
+              <div style="background:var(--inp);border-radius:12px;padding:12px 14px">
+                <div style="display:flex;justify-content:space-between;padding:3px 0"><span
+                    style="font-size:12px;color:var(--tx2)">Gastos después del corte</span><span class="kz-num"
+                    style="font-size:12px">$2,640.00</span></div>
+                <div style="display:flex;justify-content:space-between;padding:3px 0"><span
+                    style="font-size:12px;color:var(--tx2)">Cuotas de meses del ciclo</span><span class="kz-num"
+                    style="font-size:12px">$2,777.78</span></div>
+                <div style="display:flex;justify-content:space-between;padding:3px 0"><span
+                    style="font-size:12px;color:var(--tx2)">Saldo a favor</span><span class="kz-num"
+                    style="font-size:12px;color:var(--pos)">−$500.00</span></div>
+              </div>
+            </div>
+            <div class="kz-card"
+              style="background:var(--sf);border:1px solid var(--ln);padding:16px 20px;display:flex;align-items:center;gap:12px">
+              <div
+                style="width:28px;height:28px;border-radius:999px;background:var(--warnsub);display:flex;align-items:center;justify-content:center;color:var(--warn);flex:none">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+                  stroke-linecap="round">
+                  <circle cx="12" cy="12" r="9"></circle>
+                  <path d="M12 7v5l3 3"></path>
+                </svg>
+              </div>
+              <span style="font-size:13px;color:var(--tx2);line-height:1.5">Te avisamos antes del corte y antes de la
+                fecha límite. También si tu gasto del mes se acerca a tu monto asegurado.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="border-bottom:1px solid var(--ln);padding:74px 0">
+      <div class="kz-sec">
+        <div class="kz-eyebrow" style="color:var(--gold);margin-bottom:14px">Cómo se usa</div>
+        <h2 class="kz-h2" style="max-width:560px;margin-bottom:38px">Tres minutos para configurarla. Segundos para
+          usarla.</h2>
+        <div class="kz-grid">
+          <div class="kz-card" style="background:var(--sf);border:1px solid var(--ln)">
+            <div class="kz-num" style="font-size:12px;color:var(--gold);margin-bottom:12px">01</div>
+            <div style="font-size:15.5px;font-weight:600;margin-bottom:7px">Da de alta tus cuentas</div>
+            <p class="kz-p" style="font-size:13.5px;color:var(--tx2)">Débito, crédito, cheques, ahorro, efectivo o
+              inversión. En las tarjetas capturas límite, día de corte y tu deuda al corte actual.</p>
+          </div>
+          <div class="kz-card" style="background:var(--sf);border:1px solid var(--ln)">
+            <div class="kz-num" style="font-size:12px;color:var(--gold);margin-bottom:12px">02</div>
+            <div style="font-size:15.5px;font-weight:600;margin-bottom:7px">Registra tu ingreso y lo que aseguras</div>
+            <p class="kz-p" style="font-size:13.5px;color:var(--tx2)">Tu nómina con su frecuencia y el monto que apartas
+              cada mes. Desde ahí Kaizen ya sabe con cuánto cuentas para gastar.</p>
+          </div>
+          <div class="kz-card" style="background:var(--sf);border:1px solid var(--ln)">
+            <div class="kz-num" style="font-size:12px;color:var(--gold);margin-bottom:12px">03</div>
+            <div style="font-size:15.5px;font-weight:600;margin-bottom:7px">Captura como vayas gastando</div>
+            <p class="kz-p" style="font-size:13.5px;color:var(--tx2)">Monto y guardar. Tu saldo, tu presupuesto, tu
+              calendario y tus meses se actualizan al instante.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="planes" style="border-bottom:1px solid var(--ln);padding:74px 0;background:var(--inp)">
+      <div class="kz-sec">
+        <div class="kz-eyebrow" style="color:var(--gold);margin-bottom:14px">Planes</div>
+        <h2 class="kz-h2" style="max-width:600px;margin-bottom:14px">Gratis en tu teléfono. Premium en todas tus
+          pantallas.</h2>
+        <p class="kz-p" style="color:var(--tx2);max-width:600px;margin-bottom:38px">El plan gratuito trae todo el
+          control desde tu teléfono, sin recortes en cuentas, movimientos ni meses. Premium añade la nube y el acceso
+          desde donde quieras.</p>
+        <div class="kz-grid-plans">
+
+          <div class="kz-card" style="background:var(--sf);border:1px solid var(--ln)">
+            <div style="font-size:15px;font-weight:600;margin-bottom:4px">Gratuito</div>
+            <div style="display:flex;align-items:baseline;gap:7px;margin-bottom:6px"><span class="kz-num"
+                style="font-size:34px;font-weight:700;letter-spacing:-.03em">$0</span><span
+                style="font-size:12.5px;color:var(--tx3)">para siempre</span></div>
+            <p class="kz-p" style="font-size:12.5px;color:var(--tx3);margin-bottom:20px">Desde tu teléfono, con todas
+              las funciones de control.</p>
+            <div style="display:flex;flex-direction:column;gap:11px;margin-bottom:24px">
+              <div style="display:flex;gap:10px;font-size:13.5px;color:var(--tx2)"><span
+                  style="color:var(--pos)">—</span>Cuentas y tarjetas ilimitadas</div>
+              <div style="display:flex;gap:10px;font-size:13.5px;color:var(--tx2)"><span
+                  style="color:var(--pos)">—</span>Meses sin y con intereses</div>
+              <div style="display:flex;gap:10px;font-size:13.5px;color:var(--tx2)"><span
+                  style="color:var(--pos)">—</span>Presupuesto y monto asegurado</div>
+              <div style="display:flex;gap:10px;font-size:13.5px;color:var(--tx2)"><span
+                  style="color:var(--pos)">—</span>Calendario y análisis por categoría</div>
+              <div style="display:flex;gap:10px;font-size:13.5px;color:var(--tx4)"><span>—</span>Solo en teléfono móvil
+              </div>
+              <div style="display:flex;gap:10px;font-size:13.5px;color:var(--tx4)"><span>—</span>Sin sincronización en
+                la nube</div>
+              <div style="display:flex;gap:10px;font-size:13.5px;color:var(--tx4)"><span>—</span>Un solo dispositivo a
+                la vez</div>
+            </div>
+            <a href="#lanzamiento" class="kz-btn"
+              style="border:1px solid var(--ln2);color:var(--tx);width:100%;box-sizing:border-box">Avísame cuando
+              salga</a>
+          </div>
+
+          <div class="kz-card"
+            style="background:var(--sf);border:1.5px solid var(--gold);position:relative;overflow:hidden">
+            <div
+              style="position:absolute;top:0;left:22px;right:22px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)">
+            </div>
+            <div style="display:flex;align-items:center;gap:9px;margin-bottom:4px">
+              <span style="font-size:15px;font-weight:600">Premium</span>
+              <span class="kz-num"
+                style="font-size:9px;font-weight:700;color:var(--inv);background:var(--pro);border-radius:5px;padding:2px 7px">PRO</span>
+            </div>
+            <div style="display:flex;align-items:baseline;gap:7px;margin-bottom:6px"><span class="kz-num"
+                style="font-size:34px;font-weight:700;letter-spacing:-.03em;color:var(--gold)">$-</span><span
+                style="font-size:12.5px;color:var(--tx3)">al mes, pagando anual</span></div>
+            <p class="kz-p" style="font-size:12.5px;color:var(--tx3);margin-bottom:20px">O $99 al mes. Ahorras 20% con
+              el plan anual.</p>
+            <div style="display:flex;flex-direction:column;gap:11px;margin-bottom:24px">
+              <div style="display:flex;gap:10px;font-size:13.5px;color:var(--tx2)"><span
+                  style="color:var(--gold)">—</span>Todo lo del plan gratuito</div>
+              <div style="display:flex;gap:10px;font-size:13.5px;color:var(--tx2)"><span
+                  style="color:var(--gold)">—</span>Sincronización en la nube</div>
+              <div style="display:flex;gap:10px;font-size:13.5px;color:var(--tx2)"><span
+                  style="color:var(--gold)">—</span>Acceso desde otros dispositivos, sin límite</div>
+              <div style="display:flex;gap:10px;font-size:13.5px;color:var(--tx2)"><span
+                  style="color:var(--gold)">—</span>Categorías personalizables</div>
+              <div style="display:flex;gap:10px;font-size:13.5px;color:var(--tx2)"><span
+                  style="color:var(--gold)">—</span>Soporte prioritario</div>
+              <div style="display:flex;gap:10px;font-size:13.5px;color:var(--tx2)"><span
+                  style="color:var(--gold)">—</span>Acceso anticipado a lo que viene</div>
+            </div>
+            <a href="#lanzamiento" class="kz-btn"
+              style="background:var(--gold);color:var(--inv);width:100%;box-sizing:border-box">Quiero Premium al
+              salir</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div id="futuro" style="border-bottom:1px solid var(--ln);padding:74px 0">
+      <div class="kz-sec">
+        <div class="kz-eyebrow" style="color:var(--gold);margin-bottom:14px">Qué sigue</div>
+        <h2 class="kz-h2" style="max-width:600px;margin-bottom:14px">Kaizen significa mejora continua</h2>
+        <p class="kz-p" style="color:var(--tx2);max-width:600px;margin-bottom:38px">El nombre no es decorativo: la app
+          crece por versiones pequeñas y constantes. Esto es lo que ya está listo, lo que construimos ahora y lo que
+          sigue.</p>
+        <div class="kz-card" style="background:var(--sf);border:1px solid var(--ln);margin-bottom:16px">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+            <span class="kz-num"
+              style="font-size:9px;color:var(--pos);background:var(--possub);border-radius:999px;padding:3px 9px">YA
+              FUNCIONA</span>
+            <span style="font-size:14px;font-weight:600">Listo y probado</span>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <span
+              style="font-size:12.5px;color:var(--tx2);border:1px solid var(--ln);border-radius:999px;padding:7px 13px">Dashboard
+              completo</span>
+            <span
+              style="font-size:12.5px;color:var(--tx2);border:1px solid var(--ln);border-radius:999px;padding:7px 13px">Captura
+              de gastos e ingresos</span>
+            <span
+              style="font-size:12.5px;color:var(--tx2);border:1px solid var(--ln);border-radius:999px;padding:7px 13px">Transferencias
+              entre tus cuentas</span>
+            <span
+              style="font-size:12.5px;color:var(--tx2);border:1px solid var(--ln);border-radius:999px;padding:7px 13px">Análisis
+              por categoría</span>
+            <span
+              style="font-size:12.5px;color:var(--tx2);border:1px solid var(--ln);border-radius:999px;padding:7px 13px">Tarjetas,
+              corte y meses</span>
+            <span
+              style="font-size:12.5px;color:var(--tx2);border:1px solid var(--ln);border-radius:999px;padding:7px 13px">Sincronización
+              local y en la nube</span>
+          </div>
+        </div>
+        <div class="kz-grid">
+          <div class="kz-card" style="background:var(--sf);border:1px solid var(--ln)">
+            <span class="kz-num"
+              style="font-size:9px;color:var(--gold);background:var(--goldsub);border-radius:999px;padding:3px 9px">EN
+              DESARROLLO</span>
+            <div style="font-size:15.5px;font-weight:600;margin:13px 0 7px">Montos programados</div>
+            <p class="kz-p" style="font-size:13.5px;color:var(--tx2)">Programar una cantidad fija cada mes, cada
+              quincena o cada año, para que se registre sola en su fecha.</p>
+          </div>
+          <div class="kz-card" style="background:var(--sf);border:1px solid var(--ln)">
+            <span class="kz-num"
+              style="font-size:9px;color:var(--gold);background:var(--goldsub);border-radius:999px;padding:3px 9px">EN
+              DESARROLLO</span>
+            <div style="font-size:15.5px;font-weight:600;margin:13px 0 7px">Tu techo y tu piso del mes</div>
+            <p class="kz-p" style="font-size:13.5px;color:var(--tx2)">Marcar cuánto es tu máximo a gastar y con cuánto
+              cuentas realmente cada mes, visible en todo momento.</p>
+          </div>
+          <div class="kz-card" style="background:var(--sf);border:1px solid var(--ln)">
+            <span class="kz-num"
+              style="font-size:9px;color:var(--warn);background:var(--warnsub);border-radius:999px;padding:3px 9px">PLANEADO</span>
+            <div style="font-size:15.5px;font-weight:600;margin:13px 0 7px">Reportes exportables</div>
+            <p class="kz-p" style="font-size:13.5px;color:var(--tx2)">Tu año en un archivo: resumen por categoría, por
+              cuenta y por tarjeta, listo para compartir.</p>
+          </div>
+          <div class="kz-card" style="background:var(--sf);border:1px solid var(--ln)">
+            <span class="kz-num"
+              style="font-size:9px;color:var(--warn);background:var(--warnsub);border-radius:999px;padding:3px 9px">PLANEADO</span>
+            <div style="font-size:15.5px;font-weight:600;margin:13px 0 7px">Bloqueo biométrico</div>
+            <p class="kz-p" style="font-size:13.5px;color:var(--tx2)">Entrar con huella o rostro, y mantener tus cifras
+              fuera de la vista de quien tome tu teléfono.</p>
+          </div>
+          <div class="kz-card" style="background:var(--sf);border:1px solid var(--ln)">
+            <span class="kz-num"
+              style="font-size:9px;color:var(--tx3);background:var(--sf2);border-radius:999px;padding:3px 9px">EN LA
+              MESA</span>
+            <div style="font-size:15.5px;font-weight:600;margin:13px 0 7px">Presupuesto por categoría</div>
+            <p class="kz-p" style="font-size:13.5px;color:var(--tx2)">Un techo para alimentación, otro para ocio. El
+              mismo aviso del 80%, pero por rubro.</p>
+          </div>
+          <div class="kz-card" style="background:var(--sf);border:1px solid var(--ln)">
+            <span class="kz-num"
+              style="font-size:9px;color:var(--warn);background:var(--warnsub);border-radius:999px;padding:3px 9px">PLANEADO</span>
+            <div style="font-size:15.5px;font-weight:600;margin:13px 0 7px">Gastos compartidos</div>
+            <p class="kz-p" style="font-size:13.5px;color:var(--tx2)">Registrar y dar seguimiento a gastos con las
+              personas que tú elijas, sin mezclar las finanzas de cada quien.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="lanzamiento" style="padding:84px 0;position:relative;overflow:hidden">
+      <div
+        style="position:absolute;bottom:-320px;left:50%;transform:translateX(-50%);width:820px;height:820px;background:radial-gradient(circle,var(--goldsub) 0%,transparent 62%);pointer-events:none">
+      </div>
+      <div class="kz-sec" style="position:relative;text-align:center">
+        <svg viewBox="0 0 240 240" style="width:52px;height:52px;margin-bottom:20px">
+          <path d="M206.7,104.7 A88 88 0 1 1 164,43.8" fill="none" stroke="#C7A977" stroke-width="15"
+            stroke-linecap="round" stroke-dasharray="436"
+            style="animation:kz-draw 3.6s cubic-bezier(.45,0,.55,1) infinite"></path>
+        </svg>
+        <h2 class="kz-h2" style="max-width:620px;margin:0 auto 16px">Kaizen está por lanzarse</h2>
+        <p class="kz-p" style="color:var(--tx2);max-width:520px;margin:0 auto 28px">Seguimos puliendo los últimos
+          detalles y aún no tenemos fecha. Déjanos tu correo y serás de los primeros en entrar cuando abramos.</p>
+
+        <form id="waitlist-form"
+          style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:480px;margin:0 auto" novalidate>
+          <input class="kz-input" type="email" id="waitlist-email" name="email" required placeholder="tu@correo.mx"
+            autocomplete="email">
+          <input class="kz-hp" type="text" id="waitlist-hp" name="company" tabindex="-1" autocomplete="off"
+            aria-hidden="true">
+          <button type="submit" class="kz-btn" id="waitlist-submit"
+            style="background:var(--gold);color:var(--inv);flex:none">Avísame</button>
+        </form>
+        <p class="kz-p" id="waitlist-msg" role="status"
+          style="font-size:12px;color:var(--tx3);margin-top:14px;min-height:16px">Un solo correo cuando abramos. Nada
+          más.</p>
+      </div>
+    </div>
+
+    <div style="border-top:1px solid var(--ln);padding:30px 0">
+      <div class="kz-sec" style="display:flex;flex-wrap:wrap;align-items:center;gap:16px">
+        <div style="display:flex;align-items:center;gap:8px">
+          <svg viewBox="0 0 240 240" style="width:18px;height:18px">
+            <path d="M206.7,104.7 A88 88 0 1 1 164,43.8" fill="none" stroke="#C7A977" stroke-width="17"
+              stroke-linecap="round"></path>
+          </svg>
+          <span style="font-size:13px;font-weight:600">Kaizen</span>
+        </div>
+        <span class="kz-num" style="font-size:10px;color:var(--tx3);letter-spacing:.2em">改善 · MEJORA CONTINUA</span>
+        <div style="flex:1"></div>
+        <span style="font-size:11.5px;color:var(--tx3)">© 2026 Kaizen. Todos los derechos reservados.</span>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    (function () {
+      var form = document.getElementById('waitlist-form');
+      var emailInput = document.getElementById('waitlist-email');
+      var hpInput = document.getElementById('waitlist-hp');
+      var msg = document.getElementById('waitlist-msg');
+      var btn = document.getElementById('waitlist-submit');
+      var defaultMsg = msg.textContent;
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        if (hpInput.value) {
+          return; // honeypot: bot filled a field humans never see
         }
-      })
-      .catch(function () {
-        msg.style.color = 'var(--neg)';
-        msg.textContent = 'No se pudo conectar. Intenta de nuevo en un momento.';
-      })
-      .finally(function () {
-        btn.disabled = false;
-        btn.textContent = originalLabel;
+
+        var email = emailInput.value.trim();
+        if (!email) return;
+
+        btn.disabled = true;
+        var originalLabel = btn.textContent;
+        btn.textContent = 'Enviando…';
+        msg.style.color = 'var(--tx3)';
+        msg.textContent = 'Guardando tu correo…';
+
+        fetch('/api/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email, company: hpInput.value })
+        })
+          .then(function (res) {
+            return res.json().catch(function () { return {}; }).then(function (data) {
+              return { ok: res.ok, data: data };
+            });
+          })
+          .then(function (result) {
+            if (result.ok) {
+              msg.style.color = 'var(--pos)';
+              msg.textContent = '¡Listo! Quedaste registrado con ' + email + '.';
+              form.reset();
+            } else {
+              msg.style.color = 'var(--neg)';
+              msg.textContent = (result.data && result.data.error) || 'Algo salió mal. Intenta de nuevo.';
+            }
+          })
+          .catch(function () {
+            msg.style.color = 'var(--neg)';
+            msg.textContent = 'No se pudo conectar. Intenta de nuevo en un momento.';
+          })
+          .finally(function () {
+            btn.disabled = false;
+            btn.textContent = originalLabel;
+          });
       });
-  });
-})();
-</script>
+    })();
+  </script>
 
 </body>
+
 </html>
