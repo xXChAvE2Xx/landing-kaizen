@@ -1,0 +1,9 @@
+{
+  "name": "kaizen-landing",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Landing page de lista de espera para Kaizen",
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,15 @@
+# Secretos y configuración local — nunca se suben
+.env
+.env.local
+.env.*.local
+
+# Vercel
+.vercel
+
+# Dependencias (por si en algún momento se agrega alguna)
+node_modules
+
+# Sistema operativo / editor
+.DS_Store
+Thumbs.db
+*.log
